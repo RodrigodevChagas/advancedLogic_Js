@@ -11,7 +11,7 @@
     
     <h1 class="text-center">Negociações</h1>
     
-    <form class="form">
+    <form class="form" onsubmit="negociacaoController.adicionar(event)">
         
         <div class="form-group">
             <label for="data">Data</label>
@@ -59,17 +59,9 @@
         </tfoot>
     </table>
     <script src="js/app/models/Negociacao.js"></script>
+    <script src="js/app/controllers/NegociacaoController"></script>
     <script>
-        let hoje = new Date();
-        let n1 = new Negociacao(hoje, 10, 200.5);
-        
-        hoje.setDate(11);
-
-        console.log(n1.data);
-        console.log(n1.quantidade);
-        console.log(n1.valor);
-        console.log(n1.volume);
-        
+        let negociacaoController = new NegociacaoController();
     </script>
 </body>
 </html>
