@@ -9,14 +9,21 @@ class NegociacaoController {
     }
     incluir(event){
         event.preventDefault();
-        let negociacao = new Negociacao(
-            this._inputData.value,
-            this.inputQuantidade.value,
-            this.inputValor.value
-        )
-        console.log(negociacao);
-        console.log(this.inputData.value);
-        console.log(this.inputQuantidade.value);
-        console.log(this.inputValor.value);
+        let data = new Date(...
+            this._inputData.value.split('-')
+            .map(function(item, index){
+                return item - index % 2;
+            })
+            );
+        // let negociacao = new Negociacao(
+        //     data,
+        //     this.inputQuantidade.value,
+        //     this.inputValor.value
+        // )
+        // console.log(negociacao);
+        // console.log(this.inputData.value);
+        // console.log(this.inputQuantidade.value);
+        // console.log(this.inputValor.value);
+        console.log(data)
     }
 }
