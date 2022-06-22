@@ -21,4 +21,4 @@ class Negociacao{
         return this._valor;
     }
 
-    }
+}
