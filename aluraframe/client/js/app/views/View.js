@@ -9,6 +9,7 @@ class View{
         throw new Error("Método template deve ser implementado");
     }
 
+    // Manda o template implementado para o HTML
     update(model){
         
         this._elemento.innerHTML = this.template(model);

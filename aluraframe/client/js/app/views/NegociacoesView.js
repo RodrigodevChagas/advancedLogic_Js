@@ -1,5 +1,6 @@
 class NegociacoesView extends View{ 
   
+    // Retorna template string com elemento HTML para ser lançado no DOM
     template(model){
         return `
         <table class="table table-hover table-bordered">

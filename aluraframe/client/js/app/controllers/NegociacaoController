@@ -1,40 +1,47 @@
 class NegociacaoController {
+    
     constructor(){
-
+        // Emulando querySelector do JQuery e procurando os IDs no HTML
         let $ = document.querySelector.bind(document);
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
         
-        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
-        this._listaNegociacoes = new ListaNegociacoes();
         
+        this._listaNegociacoes = new ListaNegociacoes(); // Classe para criar e popular um vetor.
+        this._mensagem = new Mensagem(); // Classe para mensagem de sucesso.
+        
+        // Procurando os IDs no HTML
         this._mensagemView = new MensagemView ($('#mensagemView'));
-        this._mensagem = new Mensagem();
+        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
     }
     
+    // Criando ação após o clique no botão de enviar
     incluir(event){
         
-        event.preventDefault();
+        event.preventDefault(); // Evita o recarregamento da página após o envio.
         
-        this._listaNegociacoes.adiciona(this._criaNegociacao());
-        this._mensagem.texto = 'Negociacao concluida com sucesso.'
+        this._listaNegociacoes.adiciona(this._criaNegociacao()); //adicionando negociação no vetor
+        this._mensagem.texto = 'Negociacao concluida com sucesso.' 
         
+        // Mandando comandos para serem exibidos na tela.
         this._mensagemView.update(this._mensagem);
         this._negociacoesView.update(this._listaNegociacoes);
         
         this._limpaFormulario();
     }
 
+    // Instância e modela uma negociação
     _criaNegociacao(){
 
         return new Negociacao(
-            DataHelper.textoParaData(this._inputData.value),
+            DataHelper.textoParaData(this._inputData.value), // Recebe data em formato de string e converte para data
             this._inputQuantidade.value,
             this._inputValor.value
         )
     }
 
+    // Reseta os "placeholders" do formulário
     _limpaFormulario(){
         
         this._inputData.value = "";
