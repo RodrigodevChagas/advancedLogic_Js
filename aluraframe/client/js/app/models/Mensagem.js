@@ -1,5 +1,6 @@
 class Mensagem {
-    
+   
+    // Constructor com paramêtro pré definido, para que possa ser instanciado sem, porém aceite parâmetro
     constructor(texto = ''){
         
         this._texto = texto;
